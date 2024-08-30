@@ -1,1 +1,1 @@
-int space=2*(n-1);
+cout<< endl;
