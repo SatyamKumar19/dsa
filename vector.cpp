@@ -1,21 +1,55 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
-int main() {
-    vector<int> numbers;
+class Vector {
+private:
+    int* data;   
+    int size;    
 
+public:
     
-    numbers.push_back(10);
-    numbers.push_back(20);
-    numbers.push_back(30);
-
-    
-    cout << "First element: " << numbers[0] << endl;
-
-        for (int i = 0; i < numbers.size(); i++) {
-    cout << "Element at index " << i << ": " << numbers[i] << endl;
+    Vector(int s) : size(s) {
+        data = new int[size]; 
     }
+
+   
+    ~Vector() {
+        delete[] data;
+    }
+
+    
+    void set(int index, int value) {
+        if (index >= 0 && index < size) {
+            data[index] = value;
+        }
+    }
+
+    
+    int get(int index) const {
+        if (index >= 0 && index < size) {
+            return data[index];
+        }
+        return -1; 
+    }
+
+   
+    int getSize() const {
+        return size;
+    }
+};
+
+int main() {
+    Vector myVector(3);
+
+    
+    myVector.set(0, 1);
+    myVector.set(1, 2);
+    myVector.set(2, 3);
+
+        for (int i = 0; i < myVector.getSize(); ++i) {
+        cout << myVector.get(i) << " "; 
+    }
+cout <<endl;
 
     return 0;
 }
